@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Timeline Creative Lebarun 1447H</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0e0f10;
+  color: #c4c6cc;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  padding: 32px 20px 56px;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: inline-block;
+  background: #141516;
+  border: 1px solid #242526;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* header */
+.hdr {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid #1e1f21;
+}
+.hdr-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15px;
+  font-weight: 600;
+  color: #e2e4ea;
+  letter-spacing: -.01em;
+  margin-bottom: 6px;
+}
+.hdr-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: #484a52;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+.hdr-meta .seg { color: #9496a0; }
+.hdr-meta .sep { color: #484a54; margin: 0 8px; }
+
+/* legend */
+.legend {
+  display: flex;
+  gap: 18px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #1e1f21;
+  flex-wrap: wrap;
+}
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: #82848e;
+}
+.ld { width: 11px; height: 11px; border-radius: 2px; }
+
+/* scroll wrapper */
+.tbl-scroll { overflow-x: auto; }
+
+table {
+  border-collapse: collapse;
+  white-space: nowrap;
+  width: max-content;
+}
+
+/* sticky first 4 cols */
+td:nth-child(1), th:nth-child(1) { position: sticky; left: 0; z-index: 1; }
+td:nth-child(2), th:nth-child(2) { position: sticky; left: 40px; z-index: 1; }
+td:nth-child(3), th:nth-child(3) { position: sticky; left: 282px; z-index: 1; }
+td:nth-child(4), th:nth-child(4) { position: sticky; left: 406px; z-index: 1; }
+th:nth-child(1),th:nth-child(2),th:nth-child(3),th:nth-child(4) { z-index: 3; }
+
+th {
+  background: #191a1c;
+  color: #7a7c86;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  border: 1px solid #1e1f21;
+  text-align: center;
+}
+th.col-scope { text-align: left; }
+th.col-no    { width: 40px; }
+th.col-scope { width: 242px; }
+th.col-kat   { width: 124px; }
+th.col-st    { width: 100px; }
+
+.date-th {
+  width: 32px;
+  min-width: 32px;
+  padding: 5px 3px;
+  vertical-align: top;
+  line-height: 1;
+}
+.date-th .dn {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+}
+.date-th .dm {
+  display: block;
+  font-size: 8.5px;
+  font-weight: 400;
+  opacity: .65;
+  margin-top: 2px;
+}
+.today-th { background: #1c1412 !important; color: #a84040 !important; }
+.today-th .dn { color: #c05050; }
+
+td {
+  border: 1px solid #1c1d1f;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #c4c6cc;
+  vertical-align: middle;
+  background: #141516;
+}
+tr:hover td { background: #181920; }
+
+td.no {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: #6e7080;
+  text-align: center;
+  padding: 5px 6px;
+}
+td.scope { font-family: 'DM Sans', sans-serif; padding-left: 12px; color: #c4c6cc; }
+td.scope.sub { padding-left: 26px; color: #9496a0; font-size: 11.5px; }
+td.kat, td.st { text-align: center; }
+
+td.dc {
+  padding: 3px 2px;
+  width: 32px;
+  min-width: 32px;
+  background: #141516;
+}
+td.dc.tc { background: #1c1412 !important; }
+tr:hover td.dc { background: #181920; }
+tr:hover td.dc.tc { background: #1f1614 !important; }
+
+tr.sec-row td {
+  background: #191a1c;
+  color: #7e808a;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-color: #202124;
+}
+tr.sec-row:hover td { background: #191a1c; }
+
+/* badges — purple for Digital, orange for Cetak */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+.kd  { background: #2a1f5e; color: #c4b0ff; }  /* digital = violet */
+.kc  { background: #3b1a00; color: #f0a060; }  /* cetak   = orange */
+.kb  { background: #2e2000; color: #e0b84a; }  /* both    = amber  */
+.si  { background: #102208; color: #5fa820; }  /* in progress */
+.sd  { background: #0a2036; color: #3a82d8; }  /* done    */
+
+/* bars — flat, no accent tip */
+.bar {
+  height: 14px;
+  border-radius: 2px;
+  width: 100%;
+}
+.bar-ip   { background: #2d5a0e; }
+.bar-done { background: #0e3264; border-radius: 3px; }
+
+tr.row-done td { opacity: .75; }
+
+/* status badge clickable */
+.badge.si, .badge.sd {
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+  user-select: none;
+}
+.badge.si:hover { filter: brightness(1.2); }
+.badge.sd:hover { filter: brightness(1.2); }
+
+/* In Progress = outline only (no fill) */
+.si {
+  background: transparent;
+  color: #88d830;
+  border: 1.5px solid #88d830;
+  box-shadow: none;
+}
+/* Done = filled, no border */
+.sd {
+  background: #0e2d52;
+  color: #00e5ff;
+  border: none;
+}
+
+/* save toast */
+#save-toast {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background: #1a2a14;
+  border: 1px solid #3a6a18;
+  color: #7dd430;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+  z-index: 999;
+}
+#save-toast.show { opacity: 1; }
+
+/* last-saved line */
+#last-saved {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  color: #5a5c66;
+  padding: 6px 20px 0;
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+
+  <div class="hdr">
+    <div class="hdr-title">Timeline Creative Lebarun 1447H</div>
+    <div class="hdr-meta">
+      <span class="seg">Lebarun 1447H</span>
+      <span class="sep">|</span>
+      <span class="seg">Production II</span>
+      <span class="sep">|</span>
+      <span class="seg">Pertamina Patra Niaga</span>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="leg"><div class="ld" style="background:transparent;border:1.5px solid #5fa820"></div>In Progress</div>
+    <div class="leg"><div class="ld" style="background:#0a2036;border:1.5px solid #3a82d8"></div>Done</div>
+    <div class="leg"><div class="ld" style="background:#1c1412;border:1px solid #a84040"></div>Hari ini (29 Mar)</div>
+    <div class="leg"><div class="ld" style="background:#1e1040"></div>Digital</div>
+    <div class="leg"><div class="ld" style="background:#2a1500"></div>Cetak</div>
+  </div>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th class="col-no">No</th>
+        <th class="col-scope">Scope of Work</th>
+        <th class="col-kat">Kategori</th>
+        <th class="col-st">Status</th>
+        <th class="date-th"><span class="dn">28</span><span class="dm">Mar</span></th>
+<th class="date-th today-th"><span class="dn">29</span><span class="dm">Mar</span></th>
+<th class="date-th"><span class="dn">30</span><span class="dm">Mar</span></th>
+<th class="date-th"><span class="dn">31</span><span class="dm">Mar</span></th>
+<th class="date-th"><span class="dn">01</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">02</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">03</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">04</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">05</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">06</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">07</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">08</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">09</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">10</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">11</span><span class="dm">Apr</span></th>
+<th class="date-th"><span class="dn">12</span><span class="dm">Apr</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-done" data-orig-bar-start="0" data-orig-bar-end="0">
+<td class="no">1</td>
+<td class="scope">Desain Logo Event</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge sd">✓ Done</span></td>
+
+<td class="dc"><div class="bar bar-done"></div></td><td class="dc tc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">2</td>
+<td class="scope">Desain poster utama</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">3</td>
+<td class="scope">Desain nomor dada</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">4</td>
+<td class="scope">Desain flag pacer</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">5</td>
+<td class="scope">Desain backdrop panggung</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">6</td>
+<td class="scope">Desain photobooth</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">7</td>
+<td class="scope">Desain Sign KM</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">8</td>
+<td class="scope">Desain Sign penunjuk arah</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">9</td>
+<td class="scope">Desain Sign water station</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">10</td>
+<td class="scope">Desain Sign medals point</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr class="row-done" data-orig-bar-start="0" data-orig-bar-end="0">
+<td class="no">11</td>
+<td class="scope">Medals</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge sd">✓ Done</span></td>
+
+<td class="dc"><div class="bar bar-done"></div></td><td class="dc tc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr class="row-done" data-orig-bar-start="0" data-orig-bar-end="0">
+<td class="no">12</td>
+<td class="scope">Lanyard Medal</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge sd">✓ Done</span></td>
+
+<td class="dc"><div class="bar bar-done"></div></td><td class="dc tc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">13</td>
+<td class="scope">Finish line</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">14</td>
+<td class="scope">Que card MC</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">15</td>
+<td class="scope">Invitation Card (Management)</td>
+<td class="kat"><span class="badge kb">Digital dan Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no">16</td>
+<td class="scope">Desain 2D/3D gate start/finish</td>
+<td class="kat"><span class="badge kc">Cetak</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr class="sec-row"><td colspan="20">17. Feed / Story Instagram</td></tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">1. feed coming soon</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">2. reels video teaser 1</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">3. motion tanggal acara</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">4. reels video teaser 2</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">5. feed info tiket (free)</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">6. reels video teaser 3</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">7. Feed cara registrasi</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">8. Feed Rute / Penghibur</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">9. Feed Benefit</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">10. reels official video</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td><td class="dc"></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">11. feed ticket fully registered</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"></td>
+<td class="dc"></td>
+</tr>
+<tr>
+<td class="no"></td>
+<td class="scope sub">12. motion today is the day</td>
+<td class="kat"><span class="badge kd">Digital</span></td>
+<td class="st"><span class="badge si">In Progress</span></td>
+
+<td class="dc"><div class="bar bar-ip"></div></td><td class="dc tc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td><td class="dc"><div class="bar bar-ip"></div></td>
+<td class="dc"><div class="bar bar-ip"></div></td>
+</tr>
+    </tbody>
+  </table>
+  </div>
+
+</div>
+</div>
+
+<script>
+(function() {
+  // ── date consts ──────────────────────────────────────────────────────────
+  const START     = new Date('2026-03-28');
+  const DATES_N   = 16;
+  const MONTHS_ID = {0:'Jan',1:'Feb',2:'Mar',3:'Apr',4:'Mei',5:'Jun',
+                     6:'Jul',7:'Agu',8:'Sep',9:'Okt',10:'Nov',11:'Des'};
+
+  function dayOffset(d) {
+    return Math.round((d - START) / 86400000);
+  }
+
+  // ── update today highlight ───────────────────────────────────────────────
+  function updateToday() {
+    const now = new Date();
+    now.setHours(0,0,0,0);
+    const idx = dayOffset(now);
+
+    // remove old today marks
+    document.querySelectorAll('.today-th').forEach(el => {
+      el.classList.remove('today-th');
+    });
+    document.querySelectorAll('td.dc.tc').forEach(el => {
+      el.classList.remove('tc');
+    });
+
+    const dateThs = document.querySelectorAll('.date-th');
+    if (idx >= 0 && idx < dateThs.length) {
+      dateThs[idx].classList.add('today-th');
+    }
+
+    // update legend text
+    const leg = document.querySelector('.legend');
+    if (leg) {
+      const legItems = leg.querySelectorAll('.leg');
+      legItems.forEach(li => {
+        if (li.textContent.includes('Hari ini')) {
+          const day = now.getDate().toString().padStart(2,'0');
+          const mo  = MONTHS_ID[now.getMonth()];
+          li.childNodes[li.childNodes.length - 1].textContent = 'Hari ini (' + day + ' ' + mo + ')';
+        }
+      });
+    }
+
+    // mark today column cells
+    const rows = document.querySelectorAll('tbody tr:not(.sec-row)');
+    rows.forEach(tr => {
+      const dcs = tr.querySelectorAll('td.dc');
+      if (idx >= 0 && idx < dcs.length) {
+        dcs[idx].classList.add('tc');
+      }
+    });
+  }
+
+  // ── save/load state ──────────────────────────────────────────────────────
+  const STORE_KEY = 'gantt_lebarun_1447h';
+
+  function getState() {
+    const state = {};
+    document.querySelectorAll('tbody tr:not(.sec-row)').forEach((tr, i) => {
+      const isDone = tr.classList.contains('row-done');
+      state['row_' + i] = isDone ? 'done' : 'ip';
+      if (tr.dataset.origBarStart !== undefined) state['bar_s_' + i] = tr.dataset.origBarStart;
+      if (tr.dataset.origBarEnd   !== undefined) state['bar_e_' + i] = tr.dataset.origBarEnd;
+    });
+    return state;
+  }
+
+  function saveState() {
+    try {
+      const state = getState();
+      state._saved = new Date().toISOString();
+      localStorage.setItem(STORE_KEY, JSON.stringify(state));
+      showToast();
+      updateLastSaved(new Date());
+    } catch(e) {}
+  }
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return;
+      const state = JSON.parse(raw);
+      document.querySelectorAll('tbody tr:not(.sec-row)').forEach((tr, i) => {
+        if (state['bar_s_' + i] !== undefined) tr.dataset.origBarStart = state['bar_s_' + i];
+        if (state['bar_e_' + i] !== undefined) tr.dataset.origBarEnd   = state['bar_e_' + i];
+        if (state['row_' + i] === 'done') {
+          applyDone(tr, false);
+        }
+      });
+      if (state._saved) {
+        updateLastSaved(new Date(state._saved));
+      }
+    } catch(e) {}
+  }
+
+  function wireStatusBadges() {
+    document.querySelectorAll('td.st .badge').forEach(badge => {
+      if (!badge.getAttribute('onclick')) {
+        badge.setAttribute('onclick', 'toggleStatus(this)');
+      }
+    });
+  }
+
+  function showToast() {
+    const t = document.getElementById('save-toast');
+    if (!t) return;
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  function updateLastSaved(d) {
+    const el = document.getElementById('last-saved');
+    if (!el) return;
+    const pad = n => n.toString().padStart(2,'0');
+    el.textContent = 'Tersimpan: ' + pad(d.getDate()) + ' ' + MONTHS_ID[d.getMonth()] +
+      ' ' + d.getFullYear() + ', ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+  }
+
+  // ── get today's dc-column index ─────────────────────────────────────────
+  function getTodayIdx() {
+    const now = new Date();
+    now.setHours(0,0,0,0);
+    return dayOffset(now);
+  }
+
+  // ── apply done state to a row ────────────────────────────────────────────
+  function applyDone(tr, save) {
+    tr.classList.add('row-done');
+    tr.classList.remove('row-ip');
+
+    // update badge
+    const stTd = tr.querySelector('td.st');
+    if (stTd) stTd.innerHTML = '<span class="badge sd" onclick="toggleStatus(this)">✓ Done</span>';
+
+    const dcs = Array.from(tr.querySelectorAll('td.dc'));
+
+    // remember original bar span (indices with bars) before we touch anything
+    const origBarIndices = dcs.map((dc, i) => dc.querySelector('.bar') ? i : -1).filter(i => i >= 0);
+    if (origBarIndices.length > 0) {
+      tr.dataset.origBarStart = origBarIndices[0];
+      tr.dataset.origBarEnd   = origBarIndices[origBarIndices.length - 1];
+    }
+
+    // target: snap the done-bar endpoint to today (clamped to dc length)
+    const todayIdx = getTodayIdx();
+    const origStart = parseInt(tr.dataset.origBarStart ?? origBarIndices[0] ?? 0);
+    const origEnd   = parseInt(tr.dataset.origBarEnd   ?? origBarIndices[origBarIndices.length - 1] ?? 0);
+
+    // if bar is fixed to a single cell (origStart === origEnd), don't snap to today
+    let doneEnd;
+    if (origStart === origEnd) {
+      doneEnd = origEnd;
+    } else if (todayIdx >= 0 && todayIdx < dcs.length) {
+      // use the later of today or origStart so bar always has at least 1 cell
+      doneEnd = Math.max(origStart, todayIdx);
+    } else {
+      doneEnd = origEnd;
+    }
+
+    // clear all bars first
+    dcs.forEach(dc => { const b = dc.querySelector('.bar'); if (b) b.remove(); });
+
+    // draw done bar: solid block from origStart to doneEnd (single merged bar in last cell,
+    // empty cells in between — we fill each cell for visual continuity)
+    for (let i = origStart; i <= doneEnd; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'bar bar-done';
+      dcs[i].appendChild(bar);
+    }
+
+    if (save) saveState();
+  }
+
+  function applyInProgress(tr, save) {
+    tr.classList.remove('row-done');
+    tr.classList.add('row-ip');
+
+    // update badge
+    const stTd = tr.querySelector('td.st');
+    if (stTd) stTd.innerHTML = '<span class="badge si" onclick="toggleStatus(this)">In Progress</span>';
+
+    const dcs = Array.from(tr.querySelectorAll('td.dc'));
+
+    // restore original bar span saved before done was applied
+    const origStart = parseInt(tr.dataset.origBarStart ?? 0);
+    const origEnd   = parseInt(tr.dataset.origBarEnd   ?? 0);
+
+    // clear all bars first
+    dcs.forEach(dc => { const b = dc.querySelector('.bar'); if (b) b.remove(); });
+
+    // restore bar-ip from origStart to origEnd
+    if (tr.dataset.origBarStart !== undefined) {
+      for (let i = origStart; i <= origEnd; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'bar bar-ip';
+        dcs[i].appendChild(bar);
+      }
+    }
+
+    if (save) saveState();
+  }
+
+  // ── global toggleStatus (called by badge onclick) ────────────────────────
+  window.toggleStatus = function(badge) {
+    const tr = badge.closest('tr');
+    if (!tr) return;
+    if (badge.classList.contains('si')) {
+      applyDone(tr, true);
+    } else {
+      applyInProgress(tr, true);
+    }
+  };
+
+  // ── global markDone (legacy, kept for safety) ────────────────────────────
+  window.markDone = function(btn) {
+    const tr = btn.closest('tr');
+    if (tr) applyDone(tr, true);
+  };
+
+  // ── init ─────────────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    updateToday();
+    loadState();
+    wireStatusBadges();
+    // refresh today every hour
+    setInterval(updateToday, 3600000);
+  });
+
+})();
+</script>
+
+</body>
+</html>
